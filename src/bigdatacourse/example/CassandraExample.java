@@ -62,7 +62,7 @@ public class CassandraExample {
 //		exampleCreateTable(session);
 //
 ////		// creating the prepared statements
-//		PreparedStatement pstmtAdd 		= 	session.prepare(CQL_USER_VIEW_INSERT);
+		PreparedStatement pstmtAdd 		= 	session.prepare(CQL_USER_VIEW_INSERT);
 		PreparedStatement pstmtSelect 	= 	session.prepare(CQL_USER_VIEW_SELECT);
 	
 		// insert examples

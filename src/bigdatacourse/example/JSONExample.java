@@ -9,7 +9,7 @@ public class JSONExample {
 		// you will find here a few examples to handle JSON.Org
 		System.out.println("you will find here a few examples to handle JSON.org");
 		
-		// creating object examples
+//		// creating object examples
 		JSONObject json		=	new JSONObject();								// initialize empty object
 		json				=	new JSONObject("{\"phone\":\"05212345678\"}");	// initialize from string
 		
@@ -19,8 +19,8 @@ public class JSONExample {
 		json.put("city", "Tel Aviv");
 		System.out.println(json);					// prints single line
 		System.out.println(json.toString(4));		// prints "easy reading"	
-		
-		// adding inner objects
+//		
+//		// adding inner objects
 		JSONObject main = new JSONObject();
 		main.put("address", json);
 		main.put("name", "Rubi Boim");
