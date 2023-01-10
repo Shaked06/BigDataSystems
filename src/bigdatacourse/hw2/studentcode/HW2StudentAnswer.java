@@ -162,11 +162,10 @@ public class HW2StudentAnswer implements HW2API{
 
 		String line;
 		int maxThreads	= 100;
-		String file = "data/meta_Office_Products.json";
 
 		//	creating the thread factors
 		ExecutorService executor = Executors.newFixedThreadPool(maxThreads);		
-        BufferedReader br = new BufferedReader(new FileReader(file));
+        BufferedReader br = new BufferedReader(new FileReader(pathItemsFile));
         try {
             while ((line = br.readLine()) != null) {
             	JSONObject json = new JSONObject(line);
@@ -189,11 +188,10 @@ public class HW2StudentAnswer implements HW2API{
 	public void loadReviews(String pathReviewsFile) throws Exception {
 		String line;
 		int maxThreads	= 100;
-		String file = "data/reviews_Office_Products.json";
 
 		//	creating the thread factors
 		ExecutorService executor = Executors.newFixedThreadPool(maxThreads);		
-        BufferedReader br = new BufferedReader(new FileReader(file));
+        BufferedReader br = new BufferedReader(new FileReader(pathReviewsFile));
         try {
             while ((line = br.readLine()) != null) {
             	JSONObject json = new JSONObject(line);
@@ -252,7 +250,7 @@ public class HW2StudentAnswer implements HW2API{
 				", asin: " 			+ row.getString("asin") 	+
 				", reviewerID: " 	+ row.getString("reviewer_id") 	+
 				", reviewerName: " 	+ row.getString("reviewer_name")	+
-				", rating: " 		+ row.getDouble("rating") 	+ 
+				", rating: " 		+ (int)row.getDouble("rating") 	+ 
 				", summary: " 		+ row.getString("summary")	+
 				", reviewText: " 	+ row.getString("review_text")
 			);
@@ -261,26 +259,6 @@ public class HW2StudentAnswer implements HW2API{
 
 		}
 		System.out.println("total reviews: " + count);
-		
-		// required format - example for reviewerID A17OJCRPMYWXWV
-//		System.out.println(	
-//				"time: " 			+ Instant.ofEpochSecond(1362614400) + 
-//				", asin: " 			+ "B005QDG2AI" 	+
-//				", reviewerID: " 	+ "A17OJCRPMYWXWV" 	+
-//				", reviewerName: " 	+ "Old Flour Child"	+
-//				", rating: " 		+ 5 	+ 
-//				", summary: " 		+ "excellent quality"	+
-//				", reviewText: " 	+ "These cartridges are excellent .  I purchased them for the office where I work and they perform  like a dream.  They are a fraction of the price of the brand name cartridges.  I will order them again!");
-//
-//		System.out.println(	
-//				"time: " 			+ Instant.ofEpochSecond(1360108800) + 
-//				", asin: " 			+ "B003I89O6W" 	+
-//				", reviewerID: " 	+ "A17OJCRPMYWXWV" 	+
-//				", reviewerName: " 	+ "Old Flour Child"	+
-//				", rating: " 		+ 5 	+ 
-//				", summary: " 		+ "Checkbook Cover"	+
-//				", reviewText: " 	+ "Purchased this for the owner of a small automotive repair business I work for.  The old one was being held together with duct tape.  When I saw this one on Amazon (where I look for almost everything first) and looked at the price, I knew this was the one.  Really nice and very sturdy.");
-
 
 	}
 
@@ -297,7 +275,7 @@ public class HW2StudentAnswer implements HW2API{
 				", asin: " 			+ row.getString("asin") 	+
 				", reviewerID: " 	+ row.getString("reviewer_id") 	+
 				", reviewerName: " 	+ row.getString("reviewer_name")	+
-				", rating: " 		+ row.getDouble("rating") 	+ 
+				", rating: " 		+ (int) row.getDouble("rating") 	+ 
 				", summary: " 		+ row.getString("summary")	+
 				", reviewText: " 	+ row.getString("review_text")
 			);
@@ -306,39 +284,7 @@ public class HW2StudentAnswer implements HW2API{
 
 		}
 		System.out.println("total reviews: " + count);
-		
-		// required format - example for asin B005QDQXGQ
-//		System.out.println(	
-//				"time: " 			+ Instant.ofEpochSecond(1391299200) + 
-//				", asin: " 			+ "B005QDQXGQ" 	+
-//				", reviewerID: " 	+ "A1I5J5RUJ5JB4B" 	+
-//				", reviewerName: " 	+ "T. Taylor \"jediwife3\""	+
-//				", rating: " 		+ 5 	+ 
-//				", summary: " 		+ "Play and Learn"	+
-//				", reviewText: " 	+ "The kids had a great time doing hot potato and then having to answer a question if they got stuck with the &#34;potato&#34;. The younger kids all just sat around turnin it to read it.");
-//
-//		System.out.println(	
-//				"time: " 			+ Instant.ofEpochSecond(1390694400) + 
-//				", asin: " 			+ "B005QDQXGQ" 	+
-//				", reviewerID: " 	+ "AF2CSZ8IP8IPU" 	+
-//				", reviewerName: " 	+ "Corey Valentine \"sue\""	+
-//				", rating: " 		+ 1 	+ 
-//				", summary: " 		+ "Not good"	+
-//				", reviewText: " 	+ "This Was not worth 8 dollars would not recommend to others to buy for kids at that price do not buy");
-//
-//		System.out.println(	
-//				"time: "			+ Instant.ofEpochSecond(1388275200) + 
-//				", asin: " 			+ "B005QDQXGQ" 	+
-//				", reviewerID: " 	+ "A27W10NHSXI625" 	+
-//				", reviewerName: " 	+ "Beth"	+
-//				", rating: " 		+ 2 	+ 
-//				", summary: " 		+ "Way overpriced for a beach ball"	+
-//				", reviewText: " 	+ "It was my own fault, I guess, for not thoroughly reading the description, but this is just a blow-up beach ball.  For that, I think it was very overpriced.  I thought at least I was getting one of those pre-inflated kickball-type balls that you find in the giant bins in the chain stores.  This did have a page of instructions for a few different games kids can play.  Still, I think kids know what to do when handed a ball, and there's a lot less you can do with a beach ball than a regular kickball, anyway.");
-
-		
-	}
-	
-	
+			}
 	
 
 
@@ -350,7 +296,7 @@ public class HW2StudentAnswer implements HW2API{
 	    String image = (json.has("imUrl") ? json.getString("imUrl") : NOT_AVAILABLE_VALUE);
 	    String description = (json.has("description") ? json.getString("description") : NOT_AVAILABLE_VALUE);
 	    JSONArray arrCategories = json.getJSONArray("categories");
-	    Set<String> categories = new HashSet<String>();
+	    Set<String> categories = new TreeSet<String>();
 	    
 	    for (int i=0; i<arrCategories.length(); i++) {
 	    	JSONArray arr = arrCategories.getJSONArray(i);
